@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+<!-- Titulo -->
+{% block title %} {{ perro.nombre }} {% endblock %}
+
+<!-- Contenido -->
+{% block content %}
+<div class="container-fluid text-center">
+  <h1 class="mb-5">{{ perro.nombre }}</h1>
+  <div class="row justify-content-evenly">
+    <div class="col-4">
+      <img
+        src="{{ perro.imagen }}"
+        alt="{{ perro.nombre }}"
+        class="img-fluid"
+      />
+    </div>
+    <div class="card col-4">
+      <p>{{ perro.descripcion }}</p>
+      <p><strong>Temperamento:</strong> {{ perro.temperamento }}</p>
+      <p><strong>Origen:</strong> {{ perro.origen }}</p>
+      <p><strong>Otros nombres:</strong> {{ perro.otros_nombres }}</p>
+      <a class="btn btn-success mb-3" href="{% url 'perro_update' perro.id %}"
+        >Editar</a
+      >
+      <a class="btn btn-danger mb-3" href="{% url 'perro_delete' perro.id %}"
+        >Eliminar</a
+      >
+      <br />
+      <a
+        class="btn text-white mb-3"
+        style="background-color: #6f4e37"
+        href="{% url 'perro_list' %}"
+        role="button"
+        >Volver a la lista</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock %}
